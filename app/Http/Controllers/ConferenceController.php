@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreConferenceRequest;
 use App\Models\Conference;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -36,13 +37,15 @@ class ConferenceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): Redirectresponse
+    public function store(StoreConferenceRequest $request): Redirectresponse
     {
+        $validated = $request->validated();
+
         $conference = new Conference();
-        $conference->title = $request->input('title');
-        $conference->description = $request->input('description');
-        $conference->dateOfConference = $request->input('date');
-        $conference->address = $request->input('address');
+        $conference->title = $validated['title'];
+        $conference->description = $validated['description'];
+        $conference->dateOfConference = $validated['date'];
+        $conference->address = $validated['address'];
         $conference->save();
 
         return redirect()->route('conferences.show', ['conference' => $conference['id']]);
