@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Conference;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -24,9 +25,9 @@ class ConferenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create():View
     {
-        //
+        return view('conference.create');
     }
 
     /**
@@ -35,9 +36,16 @@ class ConferenceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): Redirectresponse
     {
-        //
+        $conference = new Conference();
+        $conference->title = $request->input('title');
+        $conference->description = $request->input('description');
+        $conference->dateOfConference = $request->input('date');
+        $conference->address = $request->input('address');
+        $conference->save();
+
+        return redirect()->route('conferences.show', ['conference' => $conference['id']]);
     }
 
     /**
@@ -46,9 +54,9 @@ class ConferenceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id):View
     {
-        //
+        return view('conference.show', ['conference' => Conference::findOrFail($id)]);
     }
 
     /**
