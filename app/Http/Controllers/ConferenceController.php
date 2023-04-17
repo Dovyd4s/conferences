@@ -10,6 +10,9 @@ use Illuminate\View\View;
 
 class ConferenceController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->only('create', 'store', 'edit', 'delete');
+    }
     /**
      * Display a listing of the resource.
      *
