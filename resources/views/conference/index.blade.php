@@ -8,6 +8,11 @@
         </a>
         <p>{{$conference['description']}}</p>
         <a href="{{route('conferences.edit', ['conference'=>$conference['id']])}}"><button type="button">Edit!</button> </a>
+        <form action="{{route('conferences.destroy', ['conference' => $conference['id']])}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete</button>
+        </form>
         <br>
     @endforeach
 @endsection

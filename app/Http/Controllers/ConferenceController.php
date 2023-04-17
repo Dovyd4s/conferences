@@ -98,8 +98,12 @@ class ConferenceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
-        //
+        $conference = (new Conference())->findOrFail($id);
+        $conference->delete();
+
+        session()->flash('status', 'Conference was DeLeteD!!11!!');
+        return redirect()->route('conferences.index');
     }
 }
