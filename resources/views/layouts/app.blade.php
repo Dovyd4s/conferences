@@ -8,28 +8,31 @@
     @if(session('status'))
         <div style="background-color: green; color: lime;">{{session('status')}}</div>
     @endif
+    <link rel="stylesheet" href="{{mix('css/app.css')}}">
     <title>@yield('title')</title>
 </head>
 <header>
-    <a href="/">Home</a>
-    @guest
-        <a href="{{route('register')}}">Register</a>
-        <a href="{{route('login')}}">Login</a>
-    @else
-        <a href="{{ route('logout') }}"
-           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            Logout
-        </a>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="/">Home</a>
+        <div class="login-buttons">
+            @guest
+                <a href="{{route('register')}}">Register</a>
+                <a href="{{route('login')}}">Login</a>
+            @else
+                <a href="{{ route('logout') }}" id="logout-link" class="link-danger">Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            @endguest
+        </div>
 
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
-    @endguest
+    </nav>
 
 </header>
 <body>
 <div>
     @yield('content')
 </div>
+<script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

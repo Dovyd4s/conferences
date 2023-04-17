@@ -7,7 +7,7 @@
         @include('conference.partials.form')
         <br>
         <div>
-            <input type="submit" value="Create">
+            <button class="btn btn-warning" type="submit" value="Create">Create</button>
         </div>
 
     </form>

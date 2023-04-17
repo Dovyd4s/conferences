@@ -8,7 +8,7 @@
 </div>
 <div>
     <label for="date-input">Date of Conference</label>
-    <input id="date-input" type="date" name="dateOfConference" value="{{old('dateOfConference', optional($conference ?? null)->dateOfConference)}}">
+    <input id="date-input" type="text" class="datepicker" name="dateOfConference" value="{{old('dateOfConference', optional($conference ?? null)->dateOfConference)}}">
 </div>
 <div>
     <label for="address-input">Address</label>

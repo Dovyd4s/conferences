@@ -42,12 +42,15 @@ class ConferenceController extends Controller
      */
     public function store(StoreConferenceRequest $request): Redirectresponse
     {
+//        $data = $request->all();
+//        ddd($data);
+
         $validated = $request->validated();
 
         $conference = new Conference();
         $conference->title = $validated['title'];
         $conference->description = $validated['description'];
-        $conference->dateOfConference = $validated['date'];
+        $conference->dateOfConference = $validated['dateOfConference'];
         $conference->address = $validated['address'];
         $conference->save();
 
