@@ -68,9 +68,9 @@ class ConferenceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id):View
     {
-        //
+        return view('conference.edit', ['conference' => Conference::findOrFail($id)]);
     }
 
     /**
@@ -80,9 +80,16 @@ class ConferenceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreConferenceRequest $request, $id):RedirectResponse
     {
-        //
+        $conference = (new Conference())->findOrFail($id);
+        $validated = $request->validated();
+        $conference->fill($validated);
+        $conference->save();
+
+        $request->session()->flash('status', 'Conference was updated!');
+
+        return redirect()->route('conferences.show', ['conference' => $conference->id]);
     }
 
     /**

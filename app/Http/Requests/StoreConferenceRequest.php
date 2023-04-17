@@ -26,7 +26,7 @@ class StoreConferenceRequest extends FormRequest
         return [
             'title'=>'required|min:5|max:40',
             'description' => 'required|min:20',
-            'date' => 'required',
+            'dateOfConference' => 'required',
             'address' => 'required'
         ];
     }
