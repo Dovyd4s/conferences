@@ -15,5 +15,9 @@ return [
     'date' => 'Date',
     'register' => 'Register',
     'login' => 'Login',
-    'logout' => 'Logout'
+    'logout' => 'Logout',
+    'country' => 'Country',
+    'city' => 'City',
+    'conference updated' => 'Conference was updated!',
+    'conference deleted' => 'Conference was DelETeD'
 ];

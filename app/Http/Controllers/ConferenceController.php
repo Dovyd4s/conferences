@@ -52,6 +52,8 @@ class ConferenceController extends Controller
         $conference->description = $validated['description'];
         $conference->dateOfConference = $validated['dateOfConference'];
         $conference->address = $validated['address'];
+        $conference->country = $validated['country'];
+        $conference->city = $validated['city'];
         $conference->save();
 
         return redirect()->route('conferences.show', ['conference' => $conference['id']]);
@@ -93,7 +95,7 @@ class ConferenceController extends Controller
         $conference->fill($validated);
         $conference->save();
 
-        $request->session()->flash('status', 'Conference was updated!');
+        $request->session()->flash('status', __('all.conference updated'));
 
         return redirect()->route('conferences.show', ['conference' => $conference->id]);
     }
@@ -109,7 +111,7 @@ class ConferenceController extends Controller
         $conference = (new Conference())->findOrFail($id);
         $conference->delete();
 
-        session()->flash('status', 'Conference was DeLeteD!!11!!');
+        session()->flash('status', __('conference deleted'));
         return redirect()->route('conferences.index');
     }
 }
