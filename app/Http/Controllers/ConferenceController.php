@@ -111,7 +111,7 @@ class ConferenceController extends Controller
         $conference = (new Conference())->findOrFail($id);
         $conference->delete();
 
-        session()->flash('status', __('conference deleted'));
+        session()->flash('status', __('all.conference deleted'));
         return redirect()->route('conferences.index');
     }
 }

@@ -22,13 +22,17 @@ class ConferenceSeeder extends Seeder
                 'title' => Lorem::sentence(5),
                 'description' => Lorem::text(),
                 'dateOfConference' => Carbon::create('2023', '05', '01'),
-                'address' => "adresas x"
+                'address' => "adresas 7",
+                'country' => 'Lietuva',
+                'city' => 'Kupiškis'
             ],
             [
                 'title' => Lorem::sentence(5),
                 'description' => Lorem::text(),
                 'dateOfConference' => Carbon::create('2023', '06', '20'),
-                'address' => "adresas 5"
+                'address' => "adresas 5",
+                'country' => 'Lietuva',
+                'city' => 'Kuršėnai'
             ]
         ]);
     }
