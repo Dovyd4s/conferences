@@ -13,13 +13,13 @@
 </head>
 <header>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/">{{__('all.page title')}}</a>
         <div class="login-buttons">
             @guest
-                <a href="{{route('register')}}">Register</a>
-                <a href="{{route('login')}}">Login</a>
+                <a href="{{route('register')}}">{{__('all.register')}}</a>
+                <a href="{{route('login')}}">{{__('all.login')}}</a>
             @else
-                <a href="{{ route('logout') }}" id="logout-link" class="link-danger">Logout</a>
+                <a href="{{ route('logout') }}" id="logout-link" class="link-danger">{{__('all.logout')}}</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>

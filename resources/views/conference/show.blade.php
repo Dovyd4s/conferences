@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('title')
-    Conference: {{$conference['title']}}
+    {{__('all.page title')}}: {{$conference['title']}}
 @endsection
 @section('content')
     <h1>{{$conference['title']}}</h1>
-    <div>Conference date: {{$conference['dateOfConference']}}</div>
-    <div>Conference address: {{$conference['address']}}</div>
-    <p>{{$conference['description']}}</p>
+    <div>{{__('all.date')}}: {{$conference['dateOfConference']}}</div>
+    <div>{{__('all.address')}}: {{$conference['address']}}</div>
+    <p>{{__('all.description')}}: {{$conference['description']}}</p>
 @endsection
