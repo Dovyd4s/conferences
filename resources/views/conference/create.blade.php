@@ -13,6 +13,5 @@
         <div>
             <button class="btn btn-warning" type="submit" value="Create">{{__('all.create')}}</button>
         </div>
-
     </form>
 @endsection
